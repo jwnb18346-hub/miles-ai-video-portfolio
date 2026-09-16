@@ -418,14 +418,21 @@ button, a { touch-action: manipulation; }
 .timeline ul li + li { margin-top: .5rem; }
 .timeline ul li::marker { color: var(--accent); }
 
-.toolset { padding: clamp(1.5rem, 3vw, 2.4rem); border: 1px solid var(--line-strong); background: var(--ink-raised); }
+.toolset { container: toolset / inline-size; padding: clamp(1.5rem, 3vw, 2.4rem); border: 1px solid var(--line-strong); background: var(--ink-raised); }
 .toolset h3 { margin: 0 0 1.5rem; font-family: var(--display); font-size: clamp(1.45rem, 2.1vw, 2rem); font-weight: 500; letter-spacing: -.045em; }
 .tool-list { margin: 0; }
 .tool-list > div { display: flex; flex-direction: column; gap: .22rem; padding: .9rem 0; border-top: 1px solid var(--line); }
 .tool-list > div:last-child { border-bottom: 1px solid var(--line); }
 .tool-list dt, .tool-list dd { margin: 0; }
 .tool-list dt { color: var(--muted); font-size: .7rem; }
-.tool-list dd { font-family: var(--display); font-size: .86rem; }
+.tool-list dd { overflow-wrap: anywhere; font-family: var(--display); font-size: .86rem; line-height: 1.45; }
+
+@container toolset (max-width: 560px) {
+  .toolset h3 { margin-bottom: 1.25rem; font-size: 2rem; line-height: 1.05; }
+  .tool-list > div { gap: .35rem; padding: 1rem 0; }
+  .tool-list dt { font-size: .82rem; }
+  .tool-list dd { font-size: 1rem; }
+}
 
 .contact-section { margin-top: 2rem; padding: clamp(5rem, 10vw, 9rem) var(--page-pad); background: var(--accent); color: var(--accent-ink); }
 .contact-inner { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(300px, .9fr); gap: clamp(2.5rem, 6vw, 5rem); max-width: var(--max-width); margin: 0 auto; align-items: end; }
@@ -480,6 +487,7 @@ button, a { touch-action: manipulation; }
 
 @media (max-width: 580px) {
   .brand { font-size: .8rem; }
+  .brand-mark { width: 38px; height: 38px; font-size: .9rem; }
   .hero-inner { bottom: 9.4rem; }
   .hero h1 { font-size: clamp(2.3rem, 11vw, 4.25rem); }
   .hero-summary { font-size: .8rem; }
@@ -495,6 +503,7 @@ button, a { touch-action: manipulation; }
   .pipeline li:last-child { border-bottom: 0; }
   .pipeline h3 { margin: 1.6rem 0 .7rem; }
   .timeline ul { padding-left: 1rem; }
+  .toolset { padding: 1.35rem; }
   .contact-grid > div { flex-direction: column; gap: .3rem; }
   .contact-grid dt { flex: none; }
   .site-footer { align-items: flex-start; flex-direction: column; }
